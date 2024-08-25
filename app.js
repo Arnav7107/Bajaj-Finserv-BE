@@ -3,7 +3,13 @@ const app = express();
 
 app.use(express.json()); 
 
-app.post('/process_data', (req, res) => {
+app.get('/bfhl', (req, res) => {
+    res.status(200).json({
+        operation_code: 1
+    });
+});
+
+app.post('/bfhl', (req, res) => {
     const data = req.body.data || []; 
 
     const numbers = [];
@@ -27,13 +33,13 @@ app.post('/process_data', (req, res) => {
     });
 
     res.json({
-        status: "success",
+        is_success: "true",
         user_id: "arnav_verma_02102003", 
-        email_id: "arnav.verma2021@vitstudent.ac.in", 
-        college_roll_number: "21BCE5119", 
+        email: "arnav.verma2021@vitstudent.ac.in", 
+        roll_number: "21BCE5119", 
         numbers,
         alphabets, 
-        highest_lowercase_alphabet: highestLowercaseAlphabet 
+        highest_lowercase_alphabet: highestLowercaseAlphabet,
     });
 });
 
